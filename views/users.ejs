@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+      <title>Users</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Nav</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/users">Users</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <form action="/user" method="post">
+      <div class="row mt-3" style="margin-left: 3px;margin-right: 3px;">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input name="username" type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input name="age" type="text" class="form-control" id="age" aria-describedby="ageHelp" placeholder="Enter age">
+          </div>
+        </div>
+      </div>
+
+        <button class="btn btn-primary mt-3" type="submit" style="float: right;margin-right: 20px;">Enregistrer</button>
+
+    </form>
+    
+    <table class="table">
+      <thead>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% for (let key in u) { %>
+          <tr>
+              <td><%= u[key].username %></td>
+              <td><%= u[key].email %></td>
+              <td><%= u[key].age %></td>
+              <td><a class="btn btn-primary" href="/user/<%= u[key]._id %>">Voir</a></td>
+          </tr>
+      <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
